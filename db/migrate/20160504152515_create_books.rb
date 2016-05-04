@@ -6,7 +6,6 @@ class CreateBooks < ActiveRecord::Migration
       t.string :description
       t.string :author
       t.integer :status
-      t.primary_key :id
       t.string :thumbnail
       t.date :return
 

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :members
   resources :books
   get 'static_pages/home'
 

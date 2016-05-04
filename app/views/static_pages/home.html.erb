@@ -1,2 +1,37 @@
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+<h1>Books</h1>
+
+<table class="responsive-table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Isbn number</th>
+      <th>Description</th>
+      <th>Author</th>
+      <th>Status</th>
+      <th>Thumbnail</th>
+      <th>Return date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <% if book.status != 0 %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.isbn %></td>
+          <td><%= book.description %></td>
+          <td><%= book.author %></td>
+          <td><%= get_status_from_number(book.status) %></td>
+          <td><%= book.thumbnail %></td>
+          <td><%= book.return %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

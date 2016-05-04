@@ -72,6 +72,8 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    material_icons (2.2.0)
+      railties (>= 3.2)
     materialize-sass (0.97.6)
       sass (~> 3.3)
     mime-types (3.0)
@@ -162,6 +164,7 @@ DEPENDENCIES
   coffee-rails (= 4.1.0)
   jbuilder (= 2.2.3)
   jquery-rails (= 4.0.3)
+  material_icons
   materialize-sass
   pg (= 0.17.1)
   rails (= 4.2.2)

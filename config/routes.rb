@@ -1,5 +1,30 @@
 Rails.application.routes.draw do
+  get 'member/member'
+
+  get 'login/login'
+
+  get 'contactus/contactus'
+
+  get 'administrator/administrator'
+
+  get 'aboutus/aboutus'
+
+  resources :users
   resources :members
+  get 'static_pages/home'
+
+  get 'static_pages/administrator'
+
+  get 'static_pages/member'
+
+  get 'static_pages/aboutus'
+
+  get 'static_pages/contactus'
+
+  get 'static_pages/login'
+
+  get 'static_pages/member'
+
   resources :books
   get 'static_pages/home'
 

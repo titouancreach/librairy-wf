@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'home/home'
+
   get 'member/member'
 
   get 'login/login'
@@ -11,28 +13,13 @@ Rails.application.routes.draw do
 
   resources :users
   resources :members
-  get 'static_pages/home'
-
-  get 'static_pages/administrator'
-
-  get 'static_pages/member'
-
-  get 'static_pages/aboutus'
-
-  get 'static_pages/contactus'
-
-  get 'static_pages/login'
-
-  get 'static_pages/member'
-
   resources :books
-  get 'static_pages/home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'
+  root 'home#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

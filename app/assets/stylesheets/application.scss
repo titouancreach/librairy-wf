@@ -16,3 +16,18 @@
  */
 
 @import "materialize";
+
+.brand-logo {
+    margin-left: 16px;
+}
+
+td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.thumbnail {
+    height: 50px;
+}

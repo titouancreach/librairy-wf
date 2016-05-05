@@ -9,4 +9,13 @@ module ApplicationHelper
               "Available"
         end
     end
+    
+    def get_userstatus_from_number(n)
+        case n
+            when 0
+                "Inactive"
+            when 1
+                "Active"
+        end
+    end
 end

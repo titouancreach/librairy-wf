@@ -15,3 +15,21 @@
 //= require turbolinks
 //= require_tree .
 //= require materialize-sprockets
+
+$(document).ready(function() {
+  $('.modal-trigger').leanModal();
+});
+
+$(document).ready(function() {
+    $('.matselect').material_select();
+     window.picker = $('.datepicker').pickadate({
+
+        selectYears: 16, // Creates a dropdown of 15 years to control year
+        format: 'yyyy-mm-dd'
+    });
+    
+    $('tr[data-href]').on("click", function() {
+     document.location = $(this).data('href');
+    });
+});
+

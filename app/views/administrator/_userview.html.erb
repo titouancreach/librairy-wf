@@ -1,0 +1,31 @@
+<h1>Users</h1>
+
+<table class="highlight">
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Address 1</th>
+      <th>Address 2</th>
+      <th>Phone number</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr data-href=<%= "/showuser/" + user.id.to_s + "/" %> >
+        <td><%= user.firstname %></td>
+        <td><%= user.lastname %></td>
+        <td><%= user.address1 %></td>
+        <td><%= user.address2 %></td>
+        <td><%= user.phone %></td>
+        <td><%= get_userstatus_from_number(user.status) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a href="/createuser" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Create</a>
+
+<br>

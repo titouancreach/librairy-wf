@@ -1,15 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-
-<%= render "home/searchbar" %>
-
-  
 <h1>Books</h1>
 
 <div class="row">  
 <div class="col s12">
 
-<table class="responsive-table">
+<table class="highlight">
 
   <thead>
     <tr>
@@ -25,20 +19,22 @@
 
   <tbody>
     <% @books.each do |book| %>
-      <% if book.status != 0 %>
-        <tr>
+        <tr data-href=<%= "/showbook/" + book.id.to_s + "/" %> >
           <td><%= book.title %></td>
           <td><%= book.isbn %></td>
           <td><%= book.description %></td>
           <td><%= book.author %></td>
           <td><%= get_status_from_number(book.status) %></td>
-          <td><%= book.thumbnail %></td>
+          <td><img class="thumbnail" src=<%= book.thumbnail %> ></td>
           <td><%= book.return %></td>
         </tr>
-      <% end %>
     <% end %>
   </tbody>
 </table>
+
+
+<a href="/createbook" class="waves-effect waves-light btn"><i class="material-icons left">book</i>Create</a>
+
 
 </div>
 

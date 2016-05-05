@@ -7,14 +7,23 @@ Rails.application.routes.draw do
 
   get 'contactus/contactus'
 
-  get 'administrator/administrator'
-
   get 'aboutus/aboutus'
 
+  get 'administrator', to: 'administrator#administrator'
+  
+  get 'editbook/:id', to: 'administrator#editbook'
+  get 'showbook/:id', to: 'administrator#showbook'
+  get 'createbook', to: 'administrator#createbook'
+  
+  get 'edituser/:id', to: 'administrator#edituser'
+  get 'showuser/:id', to: 'administrator#showuser'
+  get 'createuser/', to: 'administrator#createuser'
+  
   resources :users
   resources :members
   resources :books
-
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

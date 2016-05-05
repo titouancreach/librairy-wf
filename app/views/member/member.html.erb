@@ -1,37 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container">
+<% @books.each do |book| %>
+  <% @usr = book.userid %>
+<% end %>
 
-<h1>Rented books</h1>
+<% @usr = 10 %>
 
-<table class="responsive-table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>ISBN number</th>
-      <th>Description</th>
-      <th>Author</th>
-      <th>Status</th>
-      <th>Thumbnail</th>
-      <th>Return date</th>
-    </tr>
-  </thead>
+<% @users.each do |user| %>
+  <% if user.id == @usr %>
+    <% @usrfirstname = user.firstname %>
+    <% @usrlastname = user.lastname %>
+  <% end %>
+<% end %>
 
-  <tbody>
-    <% @books.each do |book| %>
-      <% if book.status != 0 %>
+<h2>Welcome <%= @usrfirstname %> <%= @usrlastname %></h2>
+
+<% if @usr == 10 %> 
+  <h4>List of your rented books</h4>
+    <table>
+      <thead>
         <tr>
-          <td><%= book.title %></td>
-          <td><%= book.isbn %></td>
-          <td><%= book.description %></td>
-          <td><%= book.author %></td>
-          <td><%= get_status_from_number(book.status) %></td>
-          <td><%= book.thumbnail %></td>
-          <td><%= book.return %></td>
+          <th>Title</th>
+          <th>Isbn</th>
+          <th>Description</th>
+          <th>Author</th>
+          <th>Status</th>
+          <th>Thumbnail</th>
+          <th>Return</th>
+          <th>
+          <th colspan="3"></th>
         </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-
-</div>
+      </thead>
+    
+      <tbody>
+        <% @Memberbooks.each do |mb| %>
+            <tr>
+              <td><%= mb[1] %></td>
+              <td><%= mb[2] %></td>
+              <td><%= mb[3] %></td>
+              <td><%= mb[4] %></td>
+              <td><%= mb[5] %></td>
+              <td><%= mb[6] %></td>
+              <td><%= mb[7] %></td>
+              <td><%= link_to 'Renew', mb, method: :renew, data: { confirm: 'Are you sure ?' } %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+<% end %>

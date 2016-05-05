@@ -7,7 +7,7 @@ one:
   address2: MyString
   phone: MyString
   status: 1
-  rentedbookid: 1
+  rentedbookid: MyString
 
 two:
   firstname: MyString
@@ -16,4 +16,4 @@ two:
   address2: MyString
   phone: MyString
   status: 1
-  rentedbookid: 1
+  rentedbookid: MyString

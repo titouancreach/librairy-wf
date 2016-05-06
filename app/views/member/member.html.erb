@@ -42,7 +42,13 @@
               <td><%= mb[5] %></td>
               <td><%= mb[6] %></td>
               <td><%= mb[7] %></td>
-              <td><%= link_to 'Renew', mb, method: :renew, data: { confirm: 'Are you sure ?' } %></td>
+              <td>
+                <% @books.each do |book| %>
+                    book = book.find_by(id: mb[0])
+                    <%= link_to(book_path(book, "book[return]" => Date(mb[7] + 30)), :method => :put) do %>
+                    <% end %>
+                <% end %>
+              </td>
             </tr>
         <% end %>
       </tbody>

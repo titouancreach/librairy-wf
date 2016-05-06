@@ -8,6 +8,10 @@ class SampleNameChangeColumnType < ActiveRecord::Migration
   end
   
   def up
+    change_column(:books, :userid, :integer)
+  end
+  
+  def up
      change_column(:users, :rentedbookid, :integer)
   end
 end

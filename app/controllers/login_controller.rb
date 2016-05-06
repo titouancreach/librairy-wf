@@ -3,16 +3,18 @@ class LoginController < ApplicationController
   end
   
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      log_in user
-      redirect_to user
+    user = User.find_by(username: params[:username].downcase)
+    if user && user.authenticate(params[:password])
+      session[:userid] = user.id
+      redirect_to root_ur, notice: 'Logged in!'
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:danger] = 'Invalid username/password combination'
       render 'new'
     end
   end
   
   def destroy
+    session[:userid] = nil
+    redirect_to root_url, notice: 'Logged out!'
   end
 end

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
   get 'home/home'
 
   get 'member/member'
@@ -21,8 +27,12 @@ Rails.application.routes.draw do
   
   get 'loanbook/:id', to: 'administrator#loanbook'
   
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  
   resources :users
   resources :members
+  resources :sessions, only: [:new, :create, :destroy]
   
   resources :books do
     member do

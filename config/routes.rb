@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   get 'member', to: 'member#member'
 
-  get 'login', to: 'login#login'
-
   get 'contactus', to: 'contactus#contactus'
 
   get 'aboutus', to: 'aboutus#aboutus'
@@ -23,8 +21,12 @@ Rails.application.routes.draw do
   
   get 'member/showbook/:id', to: 'member#showbook'
   
+  get 'login', to: 'sessions#new', as: 'login'
+  get 'logout', to: 'sessions#destroy', as: 'logout'
+  
   resources :users
   resources :members
+  resources :sessions, only: [:new, :create, :destroy]
   
   resources :books do
     member do

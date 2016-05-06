@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   get 'showuser/:id', to: 'administrator#showuser'
   get 'createuser/', to: 'administrator#createuser'
   
+  get 'login' => 'session#new'
+  post 'login' => 'session#create'
+  delete 'logout' => 'session#destroy'
+  
   resources :users
   resources :members
   resources :books

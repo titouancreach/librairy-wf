@@ -27,6 +27,16 @@ class AdministratorController < ApplicationController
   def createbook
     @book = Book.new
   end
+  
+  def loanbook
+    @book = Book.find(params[:id])
+    @users = User.all
+    @usersarray = []
+    
+    @users.each do |user|
+      @usersarray.push [user.firstname + " " + user.lastname, user.id]
+    end
+  end
 
    
 end

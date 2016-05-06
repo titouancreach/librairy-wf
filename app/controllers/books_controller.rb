@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :loan]
 
   # GET /books
   # GET /books.json
@@ -36,7 +36,20 @@ class BooksController < ApplicationController
       end
     end
   end
-
+  
+  def loan
+    @book.update_attributes(title: "moncul")
+    respond_to do |format|
+      if @book.update(book_params)
+        format.html { redirect_to "/administrator", notice: 'Book was successfully updated.' }
+        format.json { render :show, status: :ok, location: @book }
+      else
+        format.html { render :edit }
+        format.json { render json: @book.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
   # PATCH/PUT /books/1
   # PATCH/PUT /books/1.json
   def update

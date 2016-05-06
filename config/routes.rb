@@ -19,9 +19,17 @@ Rails.application.routes.draw do
   get 'showuser/:id', to: 'administrator#showuser'
   get 'createuser/', to: 'administrator#createuser'
   
+  get 'loanbook/:id', to: 'administrator#loanbook'
+  
   resources :users
   resources :members
-  resources :books
+  
+  resources :books do
+    member do
+      put 'loan'
+      patch 'loan'
+    end
+  end
   
   
   # The priority is based upon order of creation: first created -> highest priority.

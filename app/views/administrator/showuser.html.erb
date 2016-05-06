@@ -58,11 +58,8 @@
     </div>
 </div>
 
-<%= link_to(@user, method: :delete, data: { confirm: 'Are you sure?' }, class: "waves-effect waves-light btn") do %>
-    <i class="material-icons left">delete</i> Delete
-<% end %>
          
-<%= link_to("/edituser/" + @user.id.to_s + "/" , class: "waves-effect waves-light btn") do %>
+<%= link_to("/administrator/edituser/" + @user.id.to_s + "/" , class: "waves-effect waves-light btn") do %>
     <i class="material-icons left">edit</i> Edit
 <% end %>
 

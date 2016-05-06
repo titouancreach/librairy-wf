@@ -19,7 +19,7 @@
 
   <tbody>
     <% @books.each do |book| %>
-        <tr data-href=<%= "/showbook/" + book.id.to_s + "/" %> >
+        <tr data-href=<%= "/administrator/showbook/" + book.id.to_s + "/" %> >
           <td><%= book.title %></td>
           <td><%= book.isbn %></td>
           <td><%= book.description %></td>
@@ -33,7 +33,7 @@
 </table>
 
 
-<a href="/createbook" class="waves-effect waves-light btn"><i class="material-icons left">book</i>Create</a>
+<a href="/administrator/createbook" class="waves-effect waves-light btn"><i class="material-icons left">book</i>Create</a>
 
 
 </div>

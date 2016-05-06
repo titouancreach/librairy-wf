@@ -64,29 +64,19 @@
       <%= @book.return %>
     </div>
 </div>
-         
-<%= link_to("/administrator/editbook/" + @book.id.to_s + "/" , class: "waves-effect waves-light btn") do %>
-    <i class="material-icons left">edit</i> Edit
-<% end %>
 
-<% if @book.status.to_s == "1" %>
-    <%= link_to(book_path(@book, "book[status]" => 2, "book[userid]" => -1),class: "waves-effect waves-light btn", :method => :put) do %>
-        <i class="material-icons left">done</i> Done
-    <% end %>
-       
-    <% else %>
-     <a href="#" class="waves-effect waves-light btn disabled"><i class="material-icons left">done</i> Done</a>
-<% end %>
-
-<% if @book.status.to_s == "2" %>
-    <%= link_to("/administrator/loanbook/" + @book.id.to_s + "/" ,class: "waves-effect waves-light btn") do %>
-        <i class="material-icons left">add_shopping_cart</i> Loan
-    <% end %>
-       
-    <% else %>
-     <a href="#" class="waves-effect waves-light btn disabled"><i class="material-icons left">add_shopping_cart</i> Loan</a>
-<% end %>
-
-<form>
+<%= form_for(@book, url: renew_book_path(@book)) do |f| %>
   
-</form>
+  <!-- need to have an hiden field in order the send "book" to the controller -->
+  <%= f.hidden_field :id %> 
+  
+  <% if @book.return - @book.start_loan <= 60 %>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Renew
+        <i class="material-icons right">send</i>
+      </button>
+    <% else %>
+      <button class="btn waves-effect waves-light disabled" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    <%end%>
+<% end %>

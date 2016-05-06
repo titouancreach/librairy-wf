@@ -1,23 +1,10 @@
-<p id="notice"><%= notice %></p>
+<%= render "member/search" %>
 
-<% @books.each do |book| %>
-  <% @usr = book.userid %>
-<% end %>
-
-<% @usr = 10 %>
-
-<% @users.each do |user| %>
-  <% if user.id == @usr %>
-    <% @usrfirstname = user.firstname %>
-    <% @usrlastname = user.lastname %>
-  <% end %>
-<% end %>
 
 <h2>Welcome <%= @usrfirstname %> <%= @usrlastname %></h2>
 
-<% if @usr == 10 %> 
   <h4>List of your rented books</h4>
-    <table>
+    <table class="highlight">
       <thead>
         <tr>
           <th>Title</th>
@@ -27,30 +14,20 @@
           <th>Status</th>
           <th>Thumbnail</th>
           <th>Return</th>
-          <th>
-          <th colspan="3"></th>
         </tr>
       </thead>
     
       <tbody>
-        <% @Memberbooks.each do |mb| %>
-            <tr>
-              <td><%= mb[1] %></td>
-              <td><%= mb[2] %></td>
-              <td><%= mb[3] %></td>
-              <td><%= mb[4] %></td>
-              <td><%= mb[5] %></td>
-              <td><%= mb[6] %></td>
-              <td><%= mb[7] %></td>
-              <td>
-                <% @books.each do |book| %>
-                    book = book.find_by(id: mb[0])
-                    <%= link_to(book_path(book, "book[return]" => Date(mb[7] + 30)), :method => :put) do %>
-                    <% end %>
-                <% end %>
-              </td>
-            </tr>
+        <% @Memberbooks.each do |book| %>
+        <tr data-href=<%= "member/showbook/" + book.id.to_s + "/" %>>
+          <td><%= book.title %></td>
+          <td><%= book.isbn %></td>
+          <td><%= book.description %></td>
+          <td><%= book.author %></td>
+          <td><%= get_status_from_number(book.status) %></td>
+          <td><img class="thumbnail" src=<%= book.thumbnail %>></img></td>
+          <td><%= book.return %></td>
+        </tr>
         <% end %>
       </tbody>
     </table>
-<% end %>

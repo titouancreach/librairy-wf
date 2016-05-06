@@ -1,3 +1,4 @@
+
 <h1>Users</h1>
 
 <table class="highlight">
@@ -14,7 +15,7 @@
 
   <tbody>
     <% @users.each do |user| %>
-      <tr data-href=<%= "/showuser/" + user.id.to_s + "/" %> >
+      <tr data-href=<%= "administrator/showuser/" + user.id.to_s + "/" %> >
         <td><%= user.firstname %></td>
         <td><%= user.lastname %></td>
         <td><%= user.address1 %></td>
@@ -26,6 +27,6 @@
   </tbody>
 </table>
 
-<a href="/createuser" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Create</a>
+<a href="administrator/createuser" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Create</a>
 
 <br>

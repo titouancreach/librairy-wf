@@ -1,25 +1,27 @@
 Rails.application.routes.draw do
-  get 'home/home'
+  get 'home/', to: 'home#home'
+  get 'home/showbook/:id', to: 'home#showbook'
 
-  get 'member/member'
+  get 'member', to: 'member#member'
 
-  get 'login/login'
+  get 'login', to: 'login#login'
 
-  get 'contactus/contactus'
+  get 'contactus', to: 'contactus#contactus'
 
-  get 'aboutus/aboutus'
-
+  get 'aboutus', to: 'aboutus#aboutus'
   get 'administrator', to: 'administrator#administrator'
   
-  get 'editbook/:id', to: 'administrator#editbook'
-  get 'showbook/:id', to: 'administrator#showbook'
-  get 'createbook', to: 'administrator#createbook'
+  get 'administrator/editbook/:id', to: 'administrator#editbook'
+  get 'administrator/showbook/:id', to: 'administrator#showbook'
+  get 'administrator/createbook', to: 'administrator#createbook'
   
-  get 'edituser/:id', to: 'administrator#edituser'
-  get 'showuser/:id', to: 'administrator#showuser'
-  get 'createuser/', to: 'administrator#createuser'
+  get 'administrator/edituser/:id', to: 'administrator#edituser'
+  get 'administrator/showuser/:id', to: 'administrator#showuser'
+  get 'administrator/createuser/', to: 'administrator#createuser'
   
-  get 'loanbook/:id', to: 'administrator#loanbook'
+  get 'administrator/loanbook/:id', to: 'administrator#loanbook'
+  
+  get 'member/showbook/:id', to: 'member#showbook'
   
   resources :users
   resources :members
@@ -28,6 +30,8 @@ Rails.application.routes.draw do
     member do
       put 'loan'
       patch 'loan'
+      put 'renew'
+      patch 'renew'
     end
   end
   

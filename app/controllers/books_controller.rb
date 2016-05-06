@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy, :loan]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :loan, :renew]
 
   # GET /books
   # GET /books.json
@@ -37,8 +37,24 @@ class BooksController < ApplicationController
     end
   end
   
+  def renew
+      return_date = @book.return + 30
+      @book.update_attributes(return: @book.return + 30)
+      respond_to do |format|
+        if @book.update(book_params)
+          format.html { redirect_to member_path notice: 'Book was successfully updated.' }
+          format.json { render :show, status: :ok, location: @book }
+        else
+          format.html { render :edit }
+          format.json { render json: @book.errors, status: :unprocessable_entity }
+        end
+      end
+  end      
+  
   def loan
-    @book.update_attributes(title: "moncul")
+    @book.update_attributes(start_loan: Date.today)
+    @book.update_attributes(status: 1)
+    @book.update_attributes(return: Date.today + 30)
     respond_to do |format|
       if @book.update(book_params)
         format.html { redirect_to "/administrator", notice: 'Book was successfully updated.' }

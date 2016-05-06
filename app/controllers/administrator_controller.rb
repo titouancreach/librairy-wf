@@ -2,6 +2,8 @@ class AdministratorController < ApplicationController
   def administrator
     @books = Book.all
     @users = User.all
+    @books = @books.search(params[:keyword]) if params[:keyword].present?
+    @users = @users.search(params[:keyword]) if params[:keyword].present?
   end
   
   def editbook

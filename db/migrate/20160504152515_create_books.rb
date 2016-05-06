@@ -8,6 +8,7 @@ class CreateBooks < ActiveRecord::Migration
       t.integer :status
       t.string :thumbnail
       t.date :return
+      t.integer :userid
 
       t.timestamps null: false
     end

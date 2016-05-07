@@ -1,6 +1,6 @@
 class AdministratorController < ApplicationController
 
-  before_filter :authenticate_admin!
+  #before_filter :authenticate_admin!
   
   def administrator
     @books = Book.all

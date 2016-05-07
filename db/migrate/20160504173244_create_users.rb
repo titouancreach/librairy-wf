@@ -7,7 +7,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :address2
       t.string :phone
       t.integer :status
-      t.string :rentedbookid
 
       t.timestamps null: false
     end

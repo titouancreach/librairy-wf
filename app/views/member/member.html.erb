@@ -19,7 +19,7 @@
     
       <tbody>
         <% @Memberbooks.each do |book| %>
-        <tr data-href=<%= "member/showbook/" + book.id.to_s + "/" %>>
+        <tr data-href=<%= "/member/showbook/" + book.id.to_s + "/" %>>
           <td><%= book.title %></td>
           <td><%= book.isbn %></td>
           <td><%= book.description %></td>

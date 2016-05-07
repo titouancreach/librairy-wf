@@ -10,6 +10,7 @@
       <th>Address 2</th>
       <th>Phone number</th>
       <th>Status</th>
+      <th>Is admin</th>
     </tr>
   </thead>
 
@@ -22,11 +23,14 @@
         <td><%= user.address2 %></td>
         <td><%= user.phone %></td>
         <td><%= get_userstatus_from_number(user.status) %></td>
+        <td><%= user.isadmin %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<a href="administrator/createuser" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Create</a>
-
-<br>
+<div class="row">
+  <div class="col s12">
+    <a href="administrator/createuser" class="waves-effect waves-light btn"><i class="material-icons left">account_box</i>Create</a>
+  </div>
+</div>

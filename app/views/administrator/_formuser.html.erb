@@ -1,4 +1,5 @@
 <%= form_for(@user) do |f| %>
+  
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -64,14 +65,23 @@
   <div class="row">
     <div class="input-field col s12">
       <%= f.select(:status, [['Inactive', 0], ['Active', 1]], {}, { :class => 'matselect' }) %>
-      <label>Status</label><br>
+      <label>Status</label>
     </div>
   </div>
   
+   <div class="row">
+    <div class="col s12">
+       <%= f.check_box :isadmin %>
+       <%= f.label :isadmin, "Is admin" %>
+    </div>
+  </div>
+
   
+    <div class="row">
    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
     <i class="material-icons right">send</i>
   </button>
+  </div>
   
   
 <% end %>

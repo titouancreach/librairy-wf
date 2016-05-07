@@ -24,11 +24,11 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
   
-  resources :users
+  resources :users, only: [:new, :create, :update]
   resources :members
   resources :sessions, only: [:new, :create, :destroy]
   
-  resources :books do
+  resources :books, only: [:new, :createn, :update, :loan, :renew] do
     member do
       put 'loan'
       patch 'loan'

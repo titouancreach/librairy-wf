@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
     validates :username,
               presence: true,
               uniqueness: true
-end
+              
+      scope :search, -> (word) { where("firstname like ? OR lastname like ? ", "%#{word}%", "%#{word}%")}
 end

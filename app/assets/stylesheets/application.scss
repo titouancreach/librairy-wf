@@ -15,7 +15,9 @@
  *= require material_icons
  */
 
-@import "materialize";
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+@import 'materialize';
 
 .brand-logo {
     margin-left: 16px;
@@ -30,4 +32,8 @@ td {
 
 .thumbnail {
     height: 50px;
+}
+
+.search {
+    padding-top: 16px;
 }

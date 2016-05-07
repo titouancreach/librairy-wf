@@ -1,12 +1,14 @@
 class MemberController < ApplicationController
   
+  before_filter :authenticate_user!
+  
   def index
     @member = Member.all
   end
   
   def member
     
-    @currentusr = 2
+    @currentusr = current_user.id
     
     @users = User.all
     @books = Book.all

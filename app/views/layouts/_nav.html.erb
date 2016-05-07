@@ -2,9 +2,19 @@
     <div class="nav-wrapper">
       <a href="/" class="brand-logo">WF Library</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/login"><i class="material-icons right">account_circle</i>Sign in</a></li>
-        <li><a href="/contactus">Contact us</a></li>
-        <li><a href="/aboutus">About us</a></li>
+        <% if current_user %>
+          <li><a href="/logout"><i class="material-icons right">close</i>Logout</a></li>
+          <li><a href="/member"><i class="material-icons right">account_circle</i>Member</a></li>
+        <% else %>
+          <li><a href="/login"><i class="material-icons right">account_circle</i>Sign in</a></li>
+        <% end %>
+        
+        <% if current_user and current_user.isadmin %>
+          <li><a href="/administrator"><i class="material-icons right">build</i>Admin</a></li>
+        <% end %>
+        
+        <li><a href="/contactus"><i class="material-icons right">contact_mail</i>Contact us</a></li>
+        <li><a href="/aboutus"><i class="material-icons right">info</i>About us</a></li>
       </ul>
     </div>
   </nav>

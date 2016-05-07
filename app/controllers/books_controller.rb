@@ -25,7 +25,7 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(book_params)
-
+    @book.update_attributes(userid: -1)
     respond_to do |format|
       if @book.save
         format.html { redirect_to "/administrator", notice: 'Book was successfully created.' }

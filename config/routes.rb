@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :members
   resources :sessions, only: [:new, :create, :destroy]
   
-  resources :books, only: [:new, :createn, :update, :loan, :renew] do
+  resources :books, only: [:new, :create, :update, :loan, :renew] do
     member do
       put 'loan'
       patch 'loan'
